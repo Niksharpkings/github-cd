@@ -1,34 +1,53 @@
-#Glided by @
-
-
-
-# When to run the workflow (when a push is made to the main branch) push: branches: - main
-  # Name of the workflow on GitHub Actions dashboard
 name: Deploy
 
-# What to run when the workflow is triggered (build the site) event listener for anything that is being pushed to the main branch
 on:
   push:
     branches:
-      - main
+    - main
 
-# jobs is the list of tasks to run when the workflow is triggered
 jobs:
-  # build is the name of the job
   build:
-    # the type of machine to run the job on
     runs-on: ubuntu-latest
-    # the steps to run when the job is triggered
     steps:
-      # checkout the repository
-      - uses: actions/checkout@v2 # the action to run (checkout the repository)
-      - name: Deploy to GitHub Pages # the name of the step to run (deploy to GitHub Pages)
-      - uses: akhileshns/heroku-deploy@v3.12.11 # This is the action
-        # the environment variables to use when running the action
-        with:
-          # You can find this in your Heroku account
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          #Must be unique in Heroku account otherwise it will give error
-          heroku_app_name: "nsa-github-cd"
-          #Email associated with your Heroku account
-          heroku_email: "niksharpkings@gmail.com"
+    - uses: actions/checkout@v2
+    - name: Deploy to GitHub Pages
+      uses: akhileshns/heroku-deploy@v3.12.11
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: "nsa-github-cd"
+        heroku_email: "niksharpkings@gmail.com"
+
+
+# UCLA-U2 Full-Stack Coding Bootcamp - 2022
+#Glided by @farishkash
+
+# When to run the workflow (when a push is made to the main branch) push: branches: - main
+  # Name of the workflow on GitHub Actions dashboard
+#name: Deploy
+
+# What to run when the workflow is triggered (build the site) event listener for anything that is being pushed to the main branch
+# on:
+#   push:
+#     branches:
+#       - main
+
+# # jobs is the list of tasks to run when the workflow is triggered
+# jobs:
+#   # build is the name of the job
+#   build:
+#     # the type of machine to run the job on
+#     runs-on: ubuntu-latest
+#     # the steps to run when the job is triggered
+#     steps:
+#       # checkout the repository
+#       - uses: actions/checkout@v2 # the action to run (checkout the repository)
+#       - name: Deploy to GitHub Pages # the name of the step to run (deploy to GitHub Pages)
+#       - uses: akhileshns/heroku-deploy@v3.12.11 # This is the action
+#         # the environment variables to use when running the action
+#         with:
+#           # You can find this in your Heroku account
+#           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+#           #Must be unique in Heroku account otherwise it will give error
+#           heroku_app_name: "nsa-github-cd"
+#           #Email associated with your Heroku account
+#           heroku_email: "niksharpkings@gmail.com"
